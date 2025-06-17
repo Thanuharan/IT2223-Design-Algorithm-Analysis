@@ -1,0 +1,56 @@
+
+n=100 ;
+
+tic; % start time
+
+for i=1:n
+    disp(i);
+end
+
+elapsedTime = toc; % End timing and store elapsed time
+
+fprintf('Elapsedtime:%f seconds\n',elapsedTime);
+
+
+
+tic; %for time start 
+
+arr=[3,5,7,9,11,13];
+target=9;
+n=length(arr);
+found = false;
+
+for i=1:n
+    if arr(i)==target
+        found=true;
+           index=i;
+     break;
+    end
+end
+
+if found
+      fprintf("The target element index : %d \n",index)
+else
+    disp("traget element is not found ")
+end
+
+runtime = toc;
+
+fprintf("The runnig time is: %f \n",runtime);
+
+
+
+
+arr=[3,6,8,12,14,17,25,29,31,36,42,47,53,55,62];
+target=42;
+low=1;
+high=length(arr);
+
+while low<=high
+    mid=(low+high)/2;
+
+    if arr(mid)==
+        
+    end
+
+end

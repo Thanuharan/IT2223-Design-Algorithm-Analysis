@@ -1,0 +1,80 @@
+//Day3 // string function    
+string function
+str1='apple';
+str2='banana';
+result=strcat(str1,str2);
+disp(result)
+	//output
+	applebanana
+
+
+x={'hello','world','sri'};
+result2=strcat(x{:});
+disp(result2)
+	//output
+	helloworldsri
+	
+result3=strjoin(x,': ');	
+disp(result3)
+	//output
+	hello: world: sri
+	
+str1='age'
+str2='age'
+strcmp(str1,str2)	//if two string value same output 1 wrong 0
+	
+	//output
+	str1 =
+
+    'age'
+str2 =
+
+    'age'
+ans =
+
+  logical
+
+   1
+   
+   
+stril='the cat sat on the mat';
+indic=strfind(stril,'cat')		//'cat'  find the word in the string
+	 //output
+	indic = 5
+
+stril='the cat sat on the mat'
+old='cat'
+new='dog'
+strrep(stril,old,new)
+
+	//output
+	ans =    'the dog sat on the mat'
+
+inputstring='apple,banana,orange,grapes';
+substring=strsplit(inputstring,',')
+	//output
+	substring =
+
+  1×4 cell array
+
+    {'apple'}    {'banana'}    {'orange'}    {'grapes'}
+
+
+st1='apPPLE'
+lower(st1)
+upper(st1)
+	//output
+	ans =
+
+    'appple'
+
+
+ans =
+
+    'APPPLE'
+	
+strtrim(' hello world ')	//Remove infront and end spaces
+	//output
+	ans =
+
+    'hello world'

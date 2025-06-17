@@ -1,0 +1,297 @@
+01.Activity1
+
+
+Write a MATLAB program that simulates an ATM menu with the following options: 
+1. Deposit – Ask the user for an amount and add it to the account balance. 
+2. Withdraw – Ask the user for an amount and deduct it from the balance only if sufficient 
+funds are available. 
+3. Balance Inquiry – Display the current balance. 
+4. Exit – Terminate the program with a thank you message. 
+Instructions : 
+1. Initialize a variable balance with a starting value (e.g., 1000). 
+2. Use a while true loop to continuously display the menu and allow the user to perform 
+operations. 
+3. Use a switch-case structure to handle the user’s selection. 
+4. Validate user inputs: 
+o Amounts for deposit and withdrawal should be positive. 
+o Withdrawals should not exceed the available balance. 
+5. When the user selects option 4 (Exit), exit the loop and display a farewell message. 
+6. Format your output using fprintf() for a cleaner display. 
+
+//Ans
+% ATM Simulation Program
+clc;
+clear;
+
+balance = 1000; % Initialize account balance
+
+while true
+    % Display menu
+    fprintf('\nATM Menu:\n');
+    fprintf('1. Deposit\n');
+    fprintf('2. Withdraw\n');
+    fprintf('3. Balance Inquiry\n');
+    fprintf('4. Exit\n');
+    
+    % Get user selection
+    choice = input('Please select an option (1-4): ');
+    
+    switch choice
+        case 1
+            % Deposit
+            depositAmount = input('Enter deposit amount: ');
+            if depositAmount > 0
+                balance = balance + depositAmount;
+                fprintf('Deposit successful! Your new balance is %.2f\n', balance);
+            else
+                fprintf('Invalid amount. Please enter a positive value.\n');
+            end
+            
+        case 2
+            % Withdraw
+            withdrawAmount = input('Enter withdrawal amount: ');
+            if withdrawAmount > 0
+                if withdrawAmount <= balance
+                    balance = balance - withdrawAmount;
+                    fprintf('Withdrawal successful! Your new balance is %.2f\n', balance);
+                else
+                    fprintf('Insufficient funds. Your balance is %.2f\n', balance);
+                end
+            else
+                fprintf('Invalid amount. Please enter a positive value.\n');
+            end
+            
+        case 3
+            % Balance Inquiry
+            fprintf('Your current balance is: %.2f\n', balance);
+            
+        case 4
+            % Exit
+            fprintf('Thank you for using our ATM. Have a great day!\n');
+            break; % Exit the loop
+            
+        otherwise
+            fprintf('Invalid choice. Please select a valid option.\n');
+    end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+02. Activity 2
+Write a MATLAB program that performs the following tasks: 
+1. Prompt the user to enter marks for 5 students (out of 100). 
+2. For each mark: 
+o Display the grade using the following scheme: 
+▪ A: 90–100 
+▪ B: 80–89 
+▪ C: 70–79 
+▪ D: 60–69 
+▪ F: Below 60 
+3. After collecting all marks, display a menu with these options: 
+• Show all marks as a bar chart 
+• Show average marks 
+• Exit 
+4. Based on the user’s choice, perform the action using a switch-case block. 
+o Option 1: Plot the marks using a bar chart 
+o Option 2: Display the average of the marks 
+o Option 3: Exit the program with a thank you message 
+5. Repeat the menu until the user chooses to exit. 
+Instructions for Students: 
+• Use for loop to take input of 5 marks and store them in an array. 
+• Use if-elseif-else to determine grades. 
+• After collecting all inputs, use while true loop to display the menu and interact with user. 
+• Use switch-case for menu handling. 
+• Use bar() to display bar chart. 
+• Use mean() to calculate average. 
+
+// Ans
+% MATLAB Program to process student marks and grades
+
+% Prompt the user to enter marks for 5 students
+marks = zeros(1, 5); % Initialize an array to store marks
+grades = strings(1, 5); % Initialize an array to store grades
+disp('Enter marks for 5 students (out of 100):');
+
+for i = 1:5
+    marks(i) = input(['Enter marks for student ', num2str(i), ': ']);
+    
+    % Determine grade
+    if marks(i) >= 90 && marks(i) <= 100
+        grades(i) = 'A';
+    elseif marks(i) >= 80 && marks(i) <= 89
+        grades(i) = 'B';
+    elseif marks(i) >= 70 && marks(i) <= 79
+        grades(i) = 'C';
+    elseif marks(i) >= 60 && marks(i) <= 69
+        grades(i) = 'D';
+    else
+        grades(i) = 'F';
+    end
+    
+    % Display grade
+    disp(['Grade for student ', num2str(i), ': ', grades(i)]);
+end
+
+% Menu options
+while true
+    disp('Menu:');
+    disp('1. Show all marks as a bar chart');
+    disp('2. Show average marks');
+    disp('3. Exit');
+    
+    choice = input('Enter your choice (1/2/3): ');
+    
+    switch choice
+        case 1
+            % Plot the marks as a bar chart
+            bar(marks);
+            title('Marks of Students');
+            xlabel('Student Number');
+            ylabel('Marks');
+            grid on;
+            
+        case 2
+            % Display the average marks
+            avgMarks = mean(marks);
+            disp(['Average Marks: ', num2str(avgMarks)]);
+            
+        case 3
+            % Exit the program
+            disp('Thank you! Goodbye.');
+            break;
+            
+        otherwise
+            disp('Invalid choice. Please try again.');
+    end
+end
+
+
+03.Activity3
+Activity 3
+ Student Club Voting System with Visualization
+ Write a MATLAB program that simulates a voting system for a student club election with the
+ following candidates:- Candidate A- Candidate B- Candidate C- Candidate D
+ The program should perform the following operations:
+ Instructions:
+ 1. Prompt the user to enter the total number of voters (e.g., 10).
+ 2. Use a for loop to collect votes one by one:
+   - Display a voting menu with candidate options:
+     1. Candidate A
+     2. Candidate B
+     3. Candidate C
+     4. Candidate D
+   - Ask each voter to enter their choice.
+   - Use a switch-case structure to count the votes for each candidate.
+   - If the vote is invalid (not 1 to 4), display 'Invalid vote!' and skip the count.
+ 3. After collecting all the votes:
+   - Display the vote counts for each candidate.
+   - Use if-elseif structure to determine the winner (candidate with the highest votes).
+4. Then, show a result visualization menu:
+   1. Show Bar Chart of Votes
+   2. Show Pie Chart of Votes
+   3. Show Scatter Plot (for creative visualization)
+   4. Exit
+ 5. Based on the user's menu choice, display:
+   - A bar chart using bar() to represent vote counts.
+   - A pie chart using pie() to visualize proportions.
+   - A scatter plot using scatter() (you can scatter points randomly for visual creativity).
+ 6. Keep repeating the visualization menu until the user chooses Exit.
+ 7. Use fprintf() for all formatted outputs, and label all plots with title(), xlabel(), and ylabel() as
+ needed.
+ Reminders:
+ - Use input() to take all user inputs.
+ - Use a while true loop to manage the visualization menu.
+ - Use arrays to store the vote counts.
+ - Add appropriate grid and legends to enhance the plots.
+ - The program should be clean, user-friendly, and error-handled properly.
+
+% Student Club Voting System with Visualization
+
+% Prompt the user to enter the total number of voters
+numVoters = input('Enter the total number of voters: ');
+votes = zeros(1, 4); % Array to store votes for 4 candidates
+
+% Collect votes from users
+for i = 1:numVoters
+    fprintf('\nVoter %d, please cast your vote:\n', i);
+    fprintf('1. Candidate A\n');
+    fprintf('2. Candidate B\n');
+    fprintf('3. Candidate C\n');
+    fprintf('4. Candidate D\n');
+    
+    choice = input('Enter your choice (1-4): ');
+    switch choice
+        case 1
+            votes(1) = votes(1) + 1;
+        case 2
+            votes(2) = votes(2) + 1;
+        case 3
+            votes(3) = votes(3) + 1;
+        case 4
+            votes(4) = votes(4) + 1;
+        otherwise
+            fprintf('Invalid vote!\n');
+    end
+end
+
+% Display vote counts
+fprintf('\nVote Counts:\n');
+fprintf('Candidate A: %d\n', votes(1));
+fprintf('Candidate B: %d\n', votes(2));
+fprintf('Candidate C: %d\n', votes(3));
+fprintf('Candidate D: %d\n', votes(4));
+
+% Determine the winner
+[~, winnerIndex] = max(votes);
+if votes(1) == votes(2) && votes(1) == votes(3) && votes(1) == votes(4)
+    fprintf('It\'s a tie! No clear winner.\n');
+else
+    fprintf('The winner is Candidate %c!\n', 'A' + winnerIndex - 1);
+end
+
+% Visualization menu
+while true
+    fprintf('\nResult Visualization Menu:\n');
+    fprintf('1. Show Bar Chart of Votes\n');
+    fprintf('2. Show Pie Chart of Votes\n');
+    fprintf('3. Show Scatter Plot (Creative Visualization)\n');
+    fprintf('4. Exit\n');
+    visChoice = input('Enter your choice: ');
+    
+    switch visChoice
+        case 1
+            bar(votes);
+            title('Bar Chart of Votes');
+            xlabel('Candidates');
+            ylabel('Number of Votes');
+            xticklabels({'A', 'B', 'C', 'D'});
+            grid on;
+        case 2
+            pie(votes, {'Candidate A', 'Candidate B', 'Candidate C', 'Candidate D'});
+            title('Pie Chart of Votes');
+        case 3
+            scatter(1:4, votes, 100, 'filled');
+            title('Scatter Plot of Votes');
+            xlabel('Candidates');
+            ylabel('Number of Votes');
+            xticks(1:4);
+            xticklabels({'A', 'B', 'C', 'D'});
+            grid on;
+        case 4
+            fprintf('Exiting visualization menu. Thank you!\n');
+            break;
+        otherwise
+            fprintf('Invalid choice! Please try again.\n');
+    end
+end
